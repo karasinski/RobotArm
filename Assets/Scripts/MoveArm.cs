@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class MoveArm : MonoBehaviour
 {
-    private GameObject part;
     public float moveScale;
 
-    private string[] parts = new string[] { "armA:SR-joint", "armA:SY-joint", "armA:SP-joint", "armA:EP-joint", "armA:WP-joint", "armA:WY-joint", "armA:WR-joint" };
+    private List<Part> parts = new List<Part>();
+    private Part part;
     private int partIndex;
 
     // Use this for initialization
     void Start()
     {
+        parts.Add(new Part("armA:SR-joint", "roll"));
+        parts.Add(new Part("armA:SY-joint", "yaw"));
+        parts.Add(new Part("armA:SP-joint", "pitch"));
+        parts.Add(new Part("armA:EP-joint", "pitch"));
+        parts.Add(new Part("armA:WP-joint", "pitch"));
+        parts.Add(new Part("armA:WY-joint", "yaw"));
+        parts.Add(new Part("armA:WR-joint", "roll"));
+
         partIndex = 0;
         setPart();
     }
 
     void setPart()
     {
-        part = GameObject.Find(parts[partIndex]);
+        part = parts[partIndex];
     }
 
     // Update is called once per frame
     void Update()
     {
         float input = Input.GetAxis("Horizontal");
-        part.transform.Rotate(moveScale * input * Time.deltaTime, 0, 0);
+        part.gameObject.transform.Rotate(part.vector, moveScale * input * Time.deltaTime);
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && partIndex < parts.Length)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && partIndex < parts.Count)
         {
             partIndex++;
             setPart();
