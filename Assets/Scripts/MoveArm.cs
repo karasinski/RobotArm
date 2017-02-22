@@ -10,7 +10,6 @@ public class MoveArm : MonoBehaviour
     private Part part;
     private int partIndex;
 
-    // Use this for initialization
     void Start()
     {
         parts.Add(new Part("armA:SR-joint", "roll"));
@@ -27,10 +26,15 @@ public class MoveArm : MonoBehaviour
 
     void setPart()
     {
+        try
+        {
+            part.removeHighlight();
+        } catch { }
+
         part = parts[partIndex];
+        part.highlight();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float input = Input.GetAxis("Horizontal");
@@ -46,6 +50,5 @@ public class MoveArm : MonoBehaviour
             partIndex--;
             setPart();
         }
-        print(partIndex);
     }
 }
