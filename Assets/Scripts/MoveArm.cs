@@ -12,13 +12,13 @@ public class MoveArm : MonoBehaviour
 
     void Start()
     {
-        parts.Add(new Part("armA:SR-joint", "roll"));
-        parts.Add(new Part("armA:SY-joint", "yaw"));
-        parts.Add(new Part("armA:SP-joint", "pitch"));
-        parts.Add(new Part("armA:EP-joint", "pitch"));
-        parts.Add(new Part("armA:WP-joint", "pitch"));
-        parts.Add(new Part("armA:WY-joint", "yaw"));
-        parts.Add(new Part("armA:WR-joint", "roll"));
+        parts.Add(new Part("Canadarm2_002", "yaw"));
+        parts.Add(new Part("Canadarm2_003", "roll"));
+        parts.Add(new Part("Canadarm2_004", "pitch"));
+        parts.Add(new Part("Canadarm2_006", "pitch"));
+        parts.Add(new Part("Canadarm2_007", "pitch"));
+        parts.Add(new Part("Canadarm2_008", "yaw"));
+        parts.Add(new Part("Canadarm2_009", "roll"));
 
         partIndex = 0;
         setPart();
