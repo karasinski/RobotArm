@@ -40,7 +40,7 @@ public class MoveArm : MonoBehaviour
         float input = Input.GetAxis("Horizontal");
         part.gameObject.transform.Rotate(part.vector, moveScale * input * Time.deltaTime);
 
-        if (Input.GetKeyUp(KeyCode.UpArrow) && partIndex < parts.Count)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && partIndex < parts.Count - 1)
         {
             partIndex++;
             setPart();
